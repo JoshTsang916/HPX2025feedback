@@ -176,3 +176,119 @@ textarea:focus {
     transform: scale(1);
   }
 }
+
+/* Checkbox Style */
+.checkbox-group {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-left: 35px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-black);
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-small);
+}
+
+.checkbox-container:hover input~.checkmark {
+  background-color: #eee;
+}
+
+.checkbox-container input:checked~.checkmark {
+  background-color: var(--color-cyan);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--color-black);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* n8n Section Transition */
+.n8n-section {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin 0.5s ease;
+  opacity: 1;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: var(--border-thin);
+  background-color: #f0fffff0;
+  /* Light cyan tint */
+  box-shadow: var(--shadow-small);
+  margin-top: 10px;
+}
+
+.n8n-section.hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  pointer-events: none;
+}
+
+.helper-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  border: var(--border-thick);
+  background-color: #fff;
+  outline: none;
+  transition: all 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  background-color: #fff0f5;
+  box-shadow: var(--shadow-small);
+  transform: translate(-2px, -2px);
+}

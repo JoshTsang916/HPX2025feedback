@@ -4,6 +4,20 @@ document.querySelector<HTMLDivElement>('#app')
 
 const form = document.getElementById('feedbackForm') as HTMLFormElement;
 const container = document.querySelector('.container') as HTMLDivElement;
+const n8nCheckbox = document.getElementById('n8nInterest') as HTMLInputElement;
+const n8nSection = document.getElementById('n8n-section') as HTMLDivElement;
+
+// Toggle n8n section visibility
+if (n8nCheckbox && n8nSection) {
+  n8nCheckbox.addEventListener('change', (e) => {
+    const target = e.target as HTMLInputElement;
+    if (target.checked) {
+      n8nSection.classList.remove('hidden');
+    } else {
+      n8nSection.classList.add('hidden');
+    }
+  });
+}
 
 if (form) {
   form.addEventListener('submit', (e) => {
@@ -13,6 +27,21 @@ if (form) {
     const formData = new FormData(form);
     const encouragement = formData.get('encouragement');
     const feedback = formData.get('feedback');
+    const n8nInterest = (document.getElementById('n8nInterest') as HTMLInputElement).checked;
+
+    // Prepare payload
+    const payload: any = {
+      encouragement,
+      feedback,
+      n8nInterest,
+      timestamp: new Date().toISOString()
+    };
+
+    if (n8nInterest) {
+      payload.n8nName = formData.get('n8n-name');
+      payload.n8nEmail = formData.get('n8n-email');
+      payload.n8nComments = formData.get('n8n-comments');
+    }
 
     // Disable button to prevent double submit
     const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
@@ -28,11 +57,7 @@ if (form) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        encouragement,
-        feedback,
-        timestamp: new Date().toISOString()
-      }),
+      body: JSON.stringify(payload),
     })
       .then(response => {
         if (response.ok) {
