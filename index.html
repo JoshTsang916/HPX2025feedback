@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HPX 2025 高雄大聚 - 反饋表單</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+TC:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="comic-bg"></div>
+    <div class="container">
+      <header class="header">
+        <img src="/image/主視覺.png" alt="HPX 2025 Main Visual" class="main-visual">
+        <h1 class="title">HPX 2025</h1>
+        <h2 class="subtitle">高雄大聚</h2>
+      </header>
+      <form id="feedbackForm" class="form">
+        <div class="form-group">
+          <label for="encouragement" class="label-bubble">給工作人員的鼓勵</label>
+          <textarea id="encouragement" name="encouragement" rows="3" placeholder="你們辛苦了！超棒的！"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="feedback" class="label-bubble">你想說的話</label>
+          <textarea id="feedback" name="feedback" rows="4" placeholder="我覺得這次的活動..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">送出! POW!</button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
